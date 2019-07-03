@@ -1,6 +1,6 @@
 FROM oraclelinux:7
 
-RUN yum upgrade -y
+RUN yum upgrade -y # 2019-07-03
 RUN yum install -y openssh
 
 RUN adduser bastion
