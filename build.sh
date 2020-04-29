@@ -11,6 +11,8 @@ sudo docker tag pritunl-bastion:latest iad.ocir.io/pritunl8472/pritunl-bastion:l
 sudo docker push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:"$date"
 sudo docker push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:latest
 
+sudo docker build --rm --no-cache --format docker -t pritunl-bastion .
+
 sudo docker tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:"$date"
 sudo docker tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:latest
 sudo docker push --authfile=/etc/containers/auth.json docker.io/pritunl/pritunl-bastion:"$date"
