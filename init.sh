@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo -e "$BASTION_TRUSTED" >/ssh/trusted
-echo -e "$BASTION_HOST_KEY" >/ssh/ssh_host_key
-echo -e "$BASTION_HOST_PUB_KEY" >/ssh/ssh_host_key.pub
+echo -e "$BASTION_TRUSTED" > /ssh/trusted
+echo -e "$BASTION_HOST_KEY" > /ssh/ssh_host_key
+echo -e "$BASTION_HOST_PUB_KEY" > /ssh/ssh_host_key.pub
 chmod 0600 /ssh/ssh_host_key
 
 # Backward compatibility
