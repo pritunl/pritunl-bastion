@@ -1,17 +1,23 @@
 #!/bin/bash
 
-echo -e "$BASTION_TRUSTED" > /ssh/trusted
-echo -e "$BASTION_HOST_KEY" > /ssh/ssh_host_rsa_key
-echo -e "$BASTION_HOST_PUB_KEY" > /ssh/ssh_host_rsa_key.pub
-chmod 0600 /ssh/ssh_host_rsa_key
+echo -e "$BASTION_TRUSTED" >/ssh/trusted
+echo -e "$BASTION_HOST_KEY" >/ssh/ssh_host_key
+echo -e "$BASTION_HOST_PUB_KEY" >/ssh/ssh_host_key.pub
+chmod 0600 /ssh/ssh_host_key
 
-tee /ssh/sshd_config << EOF
+# Backward compatibility
+BASTION_HOST_CERT_PATH=/ssh_mount/ssh_host_rsa_key-cert.pub
+if test -f /ssh_mount/ssh_host_key-cert.pub; then
+  BASTION_HOST_CERT_PATH=/ssh_mount/ssh_host_key-cert.pub
+fi
+
+tee /ssh/sshd_config <<EOF
 Port 9722
 AddressFamily any
 ListenAddress 0.0.0.0
 ListenAddress ::
-HostKey /ssh/ssh_host_rsa_key
-HostCertificate /ssh_mount/ssh_host_rsa_key-cert.pub
+HostKey /ssh/ssh_host_key
+HostCertificate $BASTION_HOST_CERT_PATH
 PermitRootLogin no
 PasswordAuthentication no
 PermitEmptyPasswords no
