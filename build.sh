@@ -1,21 +1,21 @@
 #!/bin/bash
 set -e
 
-sudo docker pull oraclelinux:7
-sudo docker build --rm --no-cache -t pritunl-bastion .
+sudo podman pull oraclelinux:7
+sudo podman build --rm --no-cache -t pritunl-bastion .
 
 export date=$(date "+%Y%m%d%H%M%S")
 
-sudo docker tag pritunl-bastion:latest iad.ocir.io/pritunl8472/pritunl-bastion:"$date"
-sudo docker tag pritunl-bastion:latest iad.ocir.io/pritunl8472/pritunl-bastion:latest
-sudo docker push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:"$date"
-sudo docker push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:latest
+sudo podman tag pritunl-bastion:latest iad.ocir.io/pritunl8472/pritunl-bastion:"$date"
+sudo podman tag pritunl-bastion:latest iad.ocir.io/pritunl8472/pritunl-bastion:latest
+sudo podman push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:"$date"
+sudo podman push --authfile=/etc/containers/auth.json iad.ocir.io/pritunl8472/pritunl-bastion:latest
 
-sudo docker build --rm --no-cache --format docker -t pritunl-bastion .
+sudo podman build --rm --no-cache --format docker -t pritunl-bastion .
 
-sudo docker tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:"$date"
-sudo docker tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:latest
-sudo docker push --authfile=/etc/containers/auth.json docker.io/pritunl/pritunl-bastion:"$date"
-sudo docker push --authfile=/etc/containers/auth.json docker.io/pritunl/pritunl-bastion:latest
+sudo podman tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:"$date"
+sudo podman tag pritunl-bastion:latest docker.io/pritunl/pritunl-bastion:latest
+sudo podman push --authfile=/etc/containers/auth.json docker.io/pritunl/pritunl-bastion:"$date"
+sudo podman push --authfile=/etc/containers/auth.json docker.io/pritunl/pritunl-bastion:latest
 
 echo $date
