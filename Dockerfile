@@ -1,4 +1,4 @@
-FROM oraclelinux:7
+FROM oraclelinux:8
 
 RUN yum upgrade -y
 RUN yum install -y openssh
