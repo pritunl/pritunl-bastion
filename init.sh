@@ -18,6 +18,7 @@ ListenAddress 0.0.0.0
 ListenAddress ::
 HostKey /ssh/ssh_host_key
 HostCertificate $BASTION_HOST_CERT_PATH
+MaxAuthTries 25
 PermitRootLogin no
 PasswordAuthentication no
 PermitEmptyPasswords no
