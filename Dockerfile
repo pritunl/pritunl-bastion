@@ -1,7 +1,7 @@
-FROM oraclelinux:8
+FROM oraclelinux:9-slim
 
-RUN yum upgrade -y
-RUN yum install -y openssh
+RUN microdnf upgrade -y
+RUN microdnf install -y openssh-server
 
 RUN adduser bastion
 RUN passwd -d bastion

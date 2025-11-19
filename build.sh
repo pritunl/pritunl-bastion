@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-sudo podman pull oraclelinux:8
+sudo podman pull oraclelinux:9-slim
 sudo podman build --rm --no-cache -t pritunl-bastion .
 
 export date=$(date "+%Y%m%d%H%M%S")
