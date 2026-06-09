@@ -28,7 +28,7 @@ DenyUsers root bin daemon adm lp sync shutdown halt mail news uucp operator man 
 Match User bastion
 	AllowAgentForwarding no
 	AllowTcpForwarding yes
-	PermitOpen *:22
+	PermitOpen ${BASTION_PERMIT_OPEN:-*:22}
 	GatewayPorts no
 	X11Forwarding no
 	PermitTunnel no
